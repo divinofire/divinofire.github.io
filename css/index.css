@@ -1,18 +1,76 @@
 body{
-    background-image: url('./img/eruption.jpg');
+    background-image: url(../img/eruption.jpg);
     background-repeat: no-repeat;
+    background-size: cover;
     display: block;
     width: 70%;
     margin-left: auto;
     margin-right: auto;
-    
+    --pad1: 0.25em;    
 }
 
 h1{
-    color: blueviolet;
+    color: seashell;
     text-align: center;
+    font-family: serif;
 }
 
 h2{
-    color: brown;
+    color: white;
 }
+
+
+li{
+    font-size: 2em;
+    color:tomato;
+    padding-top: var(--pad1);
+    padding-bottom: var(--pad1);
+}
+
+ul{
+    color: white;
+}
+
+a{
+    text-decoration: none;
+}
+
+a:link{
+    color:khaki;
+}
+
+a:visited{
+    color:khaki;
+}
+
+a:hover{
+    color: fuchsia;
+}
+
+a:active{
+    color: red;
+}
+
+.earth-container{
+    display: flex;
+}
+
+#earth {
+    margin-left: auto;
+    order: 2;
+    width: 300px;
+    height: 300px;
+    background: url(https://web.archive.org/web/20150807125159if_/http://www.noirextreme.com/digital/Earth-Color4096.jpg);
+    border-radius: 50%;
+    background-size: 610px;
+    box-shadow: inset 8px 36px 80px 36px rgb(0, 0, 0), inset -6px 0 12px 4px rgba(255, 255, 255, 0.3);
+    animation-name: rotate;
+    animation-duration: 12s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+
+  }
+  @keyframes rotate {
+     from { background-position:  100%  0; }
+     to {   background-position:    0   0; }
+  }
