@@ -1,6 +1,3 @@
 [submodule "snake-js"]
 	path = snake-js
 	url = git@github.com:Divino-Fire/snake-js.git
-[submodule "projects/hello-vue-todo"]
-	path = projects/hello-vue-todo
-	url = git@github.com:Divino-Fire/hello-vue-todo.git
