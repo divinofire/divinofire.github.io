@@ -192,7 +192,7 @@ var add_todo_component = Vue.component("todo-input", {
 			<!-- input todo body -->
 			<div class="input-group mb-3">
 				<span class="input-group-text" id="label-input-todo">Todo Body</span>
-				<input type="text" value="" class="form-control divino-black-bg" id="todo_body_" placeholder="new task tody" aria-label="input todo title" @keyup.up="changeInputFocus('title')" @keyup.enter="addTodo">
+				<textarea type="text" value="" class="form-control divino-black-bg" id="todo_body_" placeholder="new task tody" aria-label="input todo title" @keyup.up="changeInputFocus('title')" @keyup.enter="addTodo"></textarea>
 				<button type="button" class="btn btn-primary" @click="addTodo">Add</button>
 				<button type="button" class="btn btn-success">Search</button>
 			</div>
