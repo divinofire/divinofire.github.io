@@ -1,0 +1,71 @@
+<!Doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+
+        <p id = "jfile"></p>
+
+        <p onclick = "getLocation()"><b>click this text to get your current position</b></p>
+        <p id = "demo"></p>
+
+
+        <script src="newuser.json"></script>
+        <script>
+            var x = document.getElementById("demo");
+            function getLocation(){
+                if(navigator.geolocation){
+                    navigator.geolocation.getCurrentPosition(showPosition);
+                }
+                else x.innerHTML = "GPS is not available<br/>";
+            }
+
+            function showPosition(position){
+                let inmap = `${position.coords.latitude},${position.coords.longitude}`;
+                
+                x.innerHTML = `latitude: ${position.coords.latitude}  longitude: ${position.coords.longitude}
+                <p><a href = "https://maps.googleapis.com/maps/api/staticmap?center=${inmap}&zoom=14&size=400x300&sensor=false&key=YOUR_KEY">click this text to locate your device on google maps</a></p>`;
+                
+            }
+
+
+
+
+
+            function loadJSON(callback) {   
+
+                var xobj = new XMLHttpRequest();
+                xobj.overrideMimeType("application/json");
+                xobj.open('GET', 'json/newuser.json', true); // Replace 'my_data' with the path to your file
+                xobj.onreadystatechange = function () {
+                    if (xobj.readyState == 4 && xobj.status == "200") {
+                         // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
+                        callback(xobj.responseText);
+                     }
+                };
+                xobj.send(null);  
+            }
+
+            function init() {
+ loadJSON(function(response) {
+  // Parse JSON string into object
+   var actual_JSON = JSON.parse(response);
+    console.log(actual_JSON);
+    console.log(actual_JSON[0].name);
+
+    actual_JSON[0].name = "james";
+    console.log(actual_JSON[0].name);
+
+
+ });
+}
+init();
+
+
+
+
+
+        </script>
+    </body>
+</html>
