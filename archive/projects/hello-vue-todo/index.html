@@ -1,0 +1,40 @@
+ <!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>hello Vue</title>
+	<link rel="stylesheet" href="./css/bootstrap.css">
+	<link rel="stylesheet" href="./css/index.css">
+	<script src="./js/bootstrap.js" type="text/javascript"></script>
+	<!-- <script src="./js/jquery-3.6.0-dev.js" type="text/javascript"></script> -->
+	<script src="./js/vue.js"></script>	
+
+</head>
+
+<body>
+
+	<header>TODO APP</header>
+	
+	<div id="todo-components">
+
+		<todo-input class="sticky-top"></todo-input>
+		
+		<!-- todo item -->
+		<todo-item v-for="(todo, index) in todos" :position="index + 1" v-bind:key="todo.id" v-bind:todo="todo"></todo-item>
+	</div>
+	
+
+<script src = "js/index.js"></script>
+	
+<script>
+
+
+</script>
+<script>
+	document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
+</script>
+
+</body>
+</html>

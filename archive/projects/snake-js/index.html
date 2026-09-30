@@ -1,0 +1,149 @@
+<!Doctype HTML>
+
+<html>
+    <head>
+
+        <meta name = "viewport" content="width=device-width, initial-scale=1.0">
+        <meta name = "Author" content="Divine Enow">
+        <meta name = "description" content = "a snake game with pure css, html and javascript">
+        <meta charset="utf-8">
+
+        <link rel="stylesheet" href="style.css">
+        
+	
+
+        <style>
+
+            body{
+                /* background-image: linear-gradient(to right,red,yellow); */
+                background-image: radial-gradient(rgb(13, 46, 107),white);
+            }
+            
+            header{
+                background-color: rgb(92, 10, 10);
+                height: 2em;
+                font-size: larger;
+                color:aliceblue;
+                text-align: center;
+
+            }
+
+            footer{
+                background-color: rgb(92, 10, 10);
+                height: 2.3em;
+                font-size: larger;
+                color:aliceblue;
+                text-align: center;
+
+            }
+        
+            .middle{
+                float:left;
+                margin-right: 10px;
+                margin-left: 30px;
+            }
+            
+            .right{
+                float: left;
+                font-size: larger;
+                color:rgb(114, 29, 50);
+                
+            }
+            .left{
+                float:left;
+                margin-right: 30px;
+                font-size: 30px;
+                color: rgb(20, 121, 79);
+            }
+
+            
+        
+        
+        </style>
+
+        
+        <!-- <script src="snakeScript.js" type="text/javascript"></script> -->
+       
+    </head>
+
+
+
+        <body>
+
+           
+   <header> snake game </header> 
+        
+
+      
+        <div class="left">
+            <br>
+            <br>
+            Hey You Are at: <br>
+        &ensp;&ensp;Level 0
+            
+
+        </div>
+            <div class="middle">
+
+        <canvas id="canvas"tabindex="1" width = "608" height = "608">
+
+        </canvas>
+       
+            </div>
+            <div class="right">
+
+
+                <h2>select player</h2>
+                <form>
+                <input type="radio" name="player" id="d" value = "Divine" checked><label>Divine</label><br>
+                <input type="radio" name="player" id="e" value="Agnes"><label id = "newPlayer">new player</label><br>
+                <input type="radio" name="player" id="f" value="Abigail" ><label>Alpha Hay</label><br>
+                <input type="input" name="addPlayer" id="add" value="phoenix" ><button class="btn btn4" id = "but" style = "color: #000000" onclick="addThisPlayer()">Add player</button><br>
+                </form>
+
+
+                <h2>select mode</h2>
+                <form>
+                <input type="radio" name="level" id="a" value = "100" checked>Fast<br>
+                <input type="radio" name="level" id="b" value="200">Medium speed<br>
+                <input type="radio" name="level" id="c" value="300" >Slow<br>
+                </form>
+
+                
+                <h2>last score</h2>
+                <form>
+                <input type="radio" name="lastScore" id="g" value = "continue" checked>continue<br>
+                <input type="radio" name="lastScore" id="h" value="Reset">Reset &ensp;&ensp;&ensp;&ensp;&ensp;&ensp; 
+                <button class="btn btn4" id="but2" onclick="window.location.reload()"> save all changes</button>
+                <br>
+                </form>
+                
+
+                <img src="pic.png" id="img" usemap="#snakeLink">
+                
+                <!-- make the snake's eye a hard resit link -->
+
+                <map name="snakeLink">
+                  
+                  <span style = "color: red;">
+                  <area  shape="circle" coords="78,70,5" href="snake.html" alt="SnakeEye">
+                  </span>
+                  
+                </map> 
+
+                </div>
+            
+           
+
+
+            <div style = "clear: both;"></div>
+            <footer>&copy; Made by Divine Enow. All rights reserved.
+ 		<marquee style="color:black;"> press CTRL + R to save changes after setting player, mode and last score. Press the SPACE KEY to pause/resume the game. </marquee>
+	  </footer>
+            
+            <script src="snakeScript.js" type="text/javascript"></script> 
+      
+        </body>
+
+
+</html>
