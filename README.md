@@ -41,7 +41,6 @@ The short version:
 | VEX V5 card               | `assets/images/projects/vex-v5-robotics/cover.jpg`        |
 | ILC paper                 | `assets/images/research/ilc-ball-plate/figure.jpg`        |
 | Inverted pendulum paper   | `assets/images/research/inverted-pendulum/figure.jpg`     |
-| Fertilizer dosing project | `assets/images/research/fertilizer-dosing/figure.jpg`     |
 
 Project covers are landscape 16:10 (about 1200 x 750 px); research figures are 4:3 (about 1200 x 900 px).
 Until a file exists, a neat placeholder with the project's initials is shown, so nothing looks broken.
