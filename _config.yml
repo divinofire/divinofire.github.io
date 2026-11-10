@@ -1,0 +1,21 @@
+# Site settings used by Jekyll (GitHub Pages builds the site from these files).
+title: Divine Enow
+tagline: Mechatronics Engineer
+description: "Divine Enow, MSc Mechatronics Engineering student (ETH Zürich × Ashesi University). Control systems, robotics, embedded systems, machine learning and energy systems."
+author: Divine Enow
+url: "https://enowdivine.com"
+baseurl: ""
+lang: en
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter_opts:
+    disable: true
+
+# Average reading speed used for "x min read"
+words_per_minute: 200
+
+exclude:
+  - README.md

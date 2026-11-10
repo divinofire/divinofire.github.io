@@ -12,5 +12,5 @@ window.SITE_CONFIG = {
   github: "https://github.com/divinofire",
 
   // Path to your CV. The "Download CV" button only appears once this file exists.
-  cv: "assets/docs/cv.pdf"
+  cv: "/assets/docs/cv.pdf"
 };

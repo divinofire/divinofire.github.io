@@ -1,0 +1,58 @@
+---
+layout: default
+---
+{%- assign words = content | strip_html | number_of_words -%}
+{%- assign mins = words | divided_by: site.words_per_minute | plus: 1 -%}
+{%- assign all_posts = site.pages | where: "layout", "post" | sort: "date" | reverse -%}
+{%- for p in all_posts -%}
+  {%- if p.url == page.url -%}
+    {%- assign i = forloop.index0 -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- assign newer_i = i | minus: 1 -%}
+{%- assign older_i = i | plus: 1 -%}
+<article class="post">
+  <div class="post-wrap">
+    <a class="post-back" href="/posts/"><span aria-hidden="true">←</span> All posts</a>
+    {%- if page.tags %}
+    <ul class="chips post-tags">{% for t in page.tags %}<li><a class="chip" href="/posts/?tag={{ t | url_encode }}">{{ t }}</a></li>{% endfor %}</ul>
+    {%- endif %}
+    <h1 class="post-title">{{ page.title }}</h1>
+    {%- if page.description %}
+    <p class="post-lede">{{ page.description }}</p>
+    {%- endif %}
+    <div class="post-byline">
+      <div class="post-author">
+        <img src="/assets/images/profile/headshot.jpg" alt="" width="40" height="40">
+        <div><strong>Divine Enow</strong><span class="post-meta"><time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: '%-d %B %Y' }}</time> · {{ mins }} min read</span></div>
+      </div>
+      {% include share.html %}
+    </div>
+    {%- if page.cover and page.show_cover != false %}
+    <img class="post-hero" src="{{ page.cover }}" alt="{{ page.cover_alt | default: '' }}">
+    {%- endif %}
+
+    <div class="prose">
+{{ content }}
+    </div>
+
+    <aside class="post-end">
+      <div>
+        <strong>Found this useful?</strong>
+        <p>Share it with someone who would enjoy it.</p>
+      </div>
+      {% include share.html label="Share this post" %}
+    </aside>
+
+    {%- if all_posts.size > 1 %}
+    <nav class="post-pn" aria-label="More posts">
+      {%- if older_i < all_posts.size %}{% assign o = all_posts[older_i] %}
+      <a href="{{ o.url }}"><small>← Previous</small>{{ o.title }}</a>
+      {%- else %}<span></span>{% endif %}
+      {%- if newer_i >= 0 %}{% assign n = all_posts[newer_i] %}
+      <a class="next" href="{{ n.url }}"><small>Next →</small>{{ n.title }}</a>
+      {%- endif %}
+    </nav>
+    {%- endif %}
+  </div>
+</article>

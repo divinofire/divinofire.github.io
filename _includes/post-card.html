@@ -1,0 +1,14 @@
+{%- assign p = include.post -%}
+{%- assign words = p.content | strip_html | number_of_words -%}
+{%- assign mins = words | divided_by: site.words_per_minute | plus: 1 -%}
+<a class="post-card reveal" href="{{ p.url }}">
+            <div class="post-cover">
+              {%- if p.cover %}<img src="{{ p.url }}{{ p.cover }}" alt="" loading="lazy">{% endif -%}
+              {%- if p.video %}<span class="post-flag"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Video</span>{% endif -%}
+            </div>
+            <div class="post-card-body">
+              <p class="post-meta"><time datetime="{{ p.date | date: '%Y-%m-%d' }}">{{ p.date | date: '%-d %b %Y' }}</time> · {{ mins }} min read</p>
+              <h3>{{ p.title }}</h3>
+              <p>{{ p.description }}</p>
+            </div>
+          </a>

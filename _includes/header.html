@@ -1,0 +1,22 @@
+{%- if page.url == '/' -%}{%- assign base = '' -%}{%- else -%}{%- assign base = '/' -%}{%- endif %}
+  <!-- ===================== HEADER ===================== -->
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="{% if page.url == '/' %}#top{% else %}/{% endif %}" aria-label="Divine Enow, back to top">
+        <span class="brand-mark" aria-hidden="true">DE</span>
+        <span class="brand-name">Divine Enow</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu"><span></span></button>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul class="nav-list">
+          <li><a href="{{ base }}#about">About</a></li>
+          <li><a href="{{ base }}#focus">Focus</a></li>
+          <li><a href="{{ base }}#research">Research</a></li>
+          <li><a href="{{ base }}#projects">Projects</a></li>
+          <li><a href="{{ base }}#experience">Experience</a></li>
+          <li><a href="/posts/"{% if page.url contains '/posts/' %} class="active" aria-current="page"{% endif %}>Posts</a></li>
+          <li class="nav-cta"><a href="{{ base }}#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>

@@ -1,0 +1,50 @@
+---
+layout: default
+title: Posts
+description: "Write-ups of projects, research, teaching and things I am learning, by Divine Enow."
+permalink: /posts/
+---
+{%- assign all_posts = site.pages | where: "layout", "post" | sort: "date" | reverse -%}
+{%- assign tags = "" | split: "" -%}
+{%- for p in all_posts -%}{%- for t in p.tags -%}{%- unless tags contains t -%}{%- assign tags = tags | push: t -%}{%- endunless -%}{%- endfor -%}{%- endfor %}
+<section class="posts-page">
+  <div class="wrap">
+    <header class="posts-head">
+      <p class="eyebrow">Posts</p>
+      <h1>Notes from the lab and beyond</h1>
+      <p>Write-ups of projects, research, teaching and things I am learning.</p>
+      {%- if tags.size > 1 %}
+      <div class="post-filters" role="group" aria-label="Filter posts by tag">
+        <button class="chip is-on" type="button" data-tag="">All</button>
+        {%- for t in tags %}
+        <button class="chip" type="button" data-tag="{{ t }}">{{ t }}</button>
+        {%- endfor %}
+      </div>
+      {%- endif %}
+    </header>
+
+    <div class="post-list">
+      {%- for p in all_posts %}
+      {%- assign words = p.content | strip_html | number_of_words -%}
+      {%- assign mins = words | divided_by: site.words_per_minute | plus: 1 %}
+      <a class="post-row" href="{{ p.url }}" data-tags="{{ p.tags | join: '|' }}">
+        <div class="post-cover">
+          {%- if p.cover %}<img src="{{ p.url }}{{ p.cover }}" alt="" loading="lazy">{% endif -%}
+          {%- if p.video %}<span class="post-flag"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Video</span>{% endif -%}
+        </div>
+        <div class="post-row-body">
+          <p class="post-meta"><time datetime="{{ p.date | date: '%Y-%m-%d' }}">{{ p.date | date: '%-d %b %Y' }}</time> · {{ mins }} min read</p>
+          <h2>{{ p.title }}</h2>
+          <p>{{ p.description }}</p>
+          {%- if p.tags %}
+          <ul class="chips">{% for t in p.tags %}<li class="chip">{{ t }}</li>{% endfor %}</ul>
+          {%- endif %}
+        </div>
+      </a>
+      {%- else %}
+      <p class="posts-empty">The first post is on its way.</p>
+      {%- endfor %}
+      <p class="posts-empty" data-empty hidden>No posts with this tag yet.</p>
+    </div>
+  </div>
+</section>

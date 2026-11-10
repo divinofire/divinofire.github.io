@@ -1,0 +1,11 @@
+{%- comment -%}
+  Usage in a post:  {% include youtube.html id="VIDEO_ID" title="What the video shows" %}
+  Shows a light placeholder; YouTube only loads when the reader presses play.
+{%- endcomment -%}
+<div class="yt" data-id="{{ include.id }}">
+  <a class="yt-start" href="https://www.youtube.com/watch?v={{ include.id }}" target="_blank" rel="noopener" style="background-image:url('https://i.ytimg.com/vi/{{ include.id }}/hqdefault.jpg')">
+    <span class="yt-title">{{ include.title | default: "Watch on YouTube" }}</span>
+    <span class="yt-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
+    <span class="sr-only">Play video: {{ include.title | default: "YouTube video" }}</span>
+  </a>
+</div>

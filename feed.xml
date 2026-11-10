@@ -1,0 +1,28 @@
+---
+layout: null
+permalink: /feed.xml
+---
+<?xml version="1.0" encoding="UTF-8"?>
+{%- assign all_posts = site.pages | where: "layout", "post" | sort: "date" | reverse %}
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>{{ site.title }} · Posts</title>
+    <link>{{ site.url }}/posts/</link>
+    <atom:link href="{{ site.url }}/feed.xml" rel="self" type="application/rss+xml"/>
+    <description>Write-ups of projects, research, teaching and things I am learning, by {{ site.author }}.</description>
+    <language>en</language>
+    <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
+    {%- for p in all_posts limit: 20 %}
+    <item>
+      <title>{{ p.title | xml_escape }}</title>
+      <link>{{ site.url }}{{ p.url }}</link>
+      <guid isPermaLink="true">{{ site.url }}{{ p.url }}</guid>
+      <pubDate>{{ p.date | date_to_rfc822 }}</pubDate>
+      <description>{{ p.description | xml_escape }}</description>
+      {%- for t in p.tags %}
+      <category>{{ t | xml_escape }}</category>
+      {%- endfor %}
+    </item>
+    {%- endfor %}
+  </channel>
+</rss>

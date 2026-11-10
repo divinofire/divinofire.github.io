@@ -2,19 +2,39 @@
 
 Personal website of **Divine Enow**, served by GitHub Pages at <https://divinofire.github.io>.
 
-Plain HTML, CSS and JavaScript. There is no build step and nothing to install: edit, commit, push,
-and GitHub publishes the change within a minute or two.
+Plain HTML, CSS and JavaScript, plus Markdown posts. GitHub Pages builds the site with Jekyll on its
+own servers, so there is nothing to install: edit, commit, push, and the change is live within a minute or two.
+
+## Writing a post
+
+1. Copy the folder `posts/_new-post-template/` and rename the copy, e.g. `posts/my-new-post/`
+   (lowercase words joined by hyphens). That name becomes the link: `enowdivine.com/posts/my-new-post/`.
+2. Put the post's pictures in that folder, including `cover.jpg`.
+3. Edit `index.md`: fill in the title, date, description, cover and tags at the top, then write the post in Markdown.
+4. Commit and push. The post appears on `/posts/`, in the "Latest writing" strip on the homepage and in the RSS feed.
+
+YouTube videos go in with `{% include youtube.html id="VIDEO_ID" title="..." %}`.
+If the site stops updating after a push, the post's top section (between the `---` lines) usually has a typo;
+GitHub shows the error under the repository's Actions tab.
 
 ## Folder map
 
 ```
-index.html                  ← the whole homepage (all text lives here)
+index.html                  ← the homepage text
+_config.yml                 ← site name, address and Jekyll settings
+_layouts/default.html       ← shared page frame: <head>, link previews, footer
+_layouts/post.html          ← how a single post page looks
+_includes/                  ← header menu, post card, share button, YouTube player
+posts/index.html            ← the "all posts" page (lists posts automatically)
+posts/<post-name>/index.md  ← one folder per post, with its pictures
+feed.xml                    ← RSS feed of the posts
 404.html                    ← "page not found" page
-.nojekyll                   ← tells GitHub to publish files as-is (keep this file)
 assets/
   css/style.css             ← colours, fonts, layout
+  css/posts.css             ← styles for posts
   js/site-config.js         ← YOUR SETTINGS: email, LinkedIn, GitHub, CV path
   js/main.js                ← menu, animations, hides missing links/images
+  js/posts.js               ← share buttons, tag filter, YouTube player
   fonts/                    ← IBM Plex Sans + Mono (self-hosted)
   docs/                     ← put cv.pdf here
   images/
