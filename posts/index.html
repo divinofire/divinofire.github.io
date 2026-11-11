@@ -25,7 +25,7 @@ permalink: /posts/
 
     <div class="post-list">
       {%- for p in all_posts %}
-      {%- assign words = p.content | strip_html | number_of_words -%}
+      {%- assign words = p.content | markdownify | strip_html | number_of_words -%}
       {%- assign mins = words | divided_by: site.words_per_minute | plus: 1 %}
       <a class="post-row" href="{{ p.url }}" data-tags="{{ p.tags | join: '|' }}">
         <div class="post-cover">
