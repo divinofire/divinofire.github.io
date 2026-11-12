@@ -1,0 +1,66 @@
+---
+layout: default
+---
+{%- assign show_price = site.shop_show_prices -%}
+{%- assign imgs = page.images -%}
+{%- if imgs == nil or imgs.size == 0 -%}{%- assign imgs = page.cover | split: "|" -%}{%- endif -%}
+{%- capture buy_icon -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M3 4h2l2.4 11.2a1.5 1.5 0 0 0 1.5 1.2h8.7a1.5 1.5 0 0 0 1.5-1.2L21 8H6"/></svg>{%- endcapture -%}
+{%- assign buy_label = page.buy_label | default: "Buy on Selar" -%}
+<article class="product">
+  <div class="wrap">
+    <a class="post-back" href="/shop/"><span aria-hidden="true">←</span> Shop</a>
+    <div class="product-top">
+      <div class="gallery" data-gallery>
+        <div class="gallery-main">
+          <img src="{{ imgs[0] }}" alt="{{ page.image_alts[0] | default: page.title | escape }}" data-gallery-main>
+        </div>
+        {%- if imgs.size > 1 %}
+        <div class="gallery-thumbs">
+          {%- for im in imgs %}
+          <button type="button"{% if forloop.first %} class="is-on"{% endif %} data-src="{{ im }}" data-alt="{{ page.image_alts[forloop.index0] | default: page.title | escape }}" aria-label="Show picture {{ forloop.index }}"><img src="{{ im }}" alt="" loading="lazy"></button>
+          {%- endfor %}
+        </div>
+        {%- endif %}
+      </div>
+
+      <aside class="buy-box" data-buybox>
+        {%- if page.kind %}<p class="eyebrow">{{ page.kind }}</p>{% endif %}
+        <h1>{{ page.title }}</h1>
+        {%- if page.description %}<p class="lede">{{ page.description }}</p>{% endif %}
+        {%- if show_price and page.price %}
+        <div class="buy-price"><span class="price{% if page.price == 'Free' %} price-free{% endif %}">{{ page.price }}</span>{% if page.price_note %}<small>{{ page.price_note }}</small>{% endif %}</div>
+        {%- endif %}
+        <a class="btn btn-primary btn-buy" href="{{ page.buy_url }}" target="_blank" rel="noopener">{{ buy_icon }} {{ buy_label }}</a>
+        {%- if page.facts %}
+        <ul class="buy-facts">
+          {%- for f in page.facts %}
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>{{ f }}</li>
+          {%- endfor %}
+        </ul>
+        {%- endif %}
+        <p class="buy-note">{% if show_price %}You will finish checkout on Selar.{% else %}See the price and finish checkout on Selar.{% endif %}</p>
+      </aside>
+    </div>
+
+    <div class="product-body">
+      {%- if page.notice %}
+      <div class="notice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg><div>{{ page.notice | markdownify | remove: '<p>' | remove: '</p>' }}</div></div>
+      {%- endif %}
+      <div class="prose">
+{{ content }}
+      </div>
+      {%- if page.related_post %}
+      {%- assign rp = site.pages | where: "url", page.related_post | first %}
+      <div class="related">
+        <div><strong>Want the full story first?</strong><p>{% if rp %}{{ rp.title }}{% else %}Read how I built it.{% endif %}</p></div>
+        <a class="btn btn-ghost" href="{{ page.related_post }}">Read the post <span aria-hidden="true">→</span></a>
+      </div>
+      {%- endif %}
+    </div>
+  </div>
+</article>
+
+<div class="buy-bar" data-buybar>
+  {%- if show_price and page.price %}<span class="price">{{ page.price }}</span>{% else %}<span class="buy-bar-title">{{ page.title }}</span>{% endif %}
+  <a class="btn btn-primary" href="{{ page.buy_url }}" target="_blank" rel="noopener">{{ buy_icon }} {{ buy_label }}</a>
+</div>

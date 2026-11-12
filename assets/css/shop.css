@@ -1,0 +1,75 @@
+/* ==========================================================================
+   Shop: /shop/ list and product pages. Checkout happens on Selar.
+   ========================================================================== */
+.shop-page { padding: 56px 0 96px; min-height: calc(100vh - 150px); }
+.shop-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.product-card { display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; text-decoration: none; color: inherit; box-shadow: var(--shadow); transition: transform .2s, box-shadow .2s; }
+.product-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); color: inherit; }
+.product-card .post-cover { aspect-ratio: 4 / 3; }
+.product-card:hover .post-cover img { transform: scale(1.03); }
+.product-card-body { padding: 16px 18px 20px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.product-card h3 { font-size: 19px; margin: 0; }
+.product-card-body > p { font-size: 15px; color: var(--muted); margin: 0; }
+.product-card-foot { margin-top: auto; padding-top: 10px; display: flex; justify-content: space-between; align-items: center; }
+.price { font-weight: 700; color: var(--ink); font-size: 18px; }
+.price-free { color: #2f7a57; }
+.product-card .see { font-size: 14.5px; font-weight: 600; color: var(--accent); }
+.product-kind { position: absolute; top: 10px; left: 10px; background: rgba(15, 23, 32, .7); color: #fff; font-size: 12px; font-weight: 500; padding: 3px 9px; border-radius: 6px; }
+
+/* Product page */
+.product { padding: 40px 0 96px; }
+.product-top { display: grid; grid-template-columns: 1.15fr .85fr; gap: 44px; align-items: start; }
+.gallery-main { border-radius: var(--radius); overflow: hidden; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow); aspect-ratio: 4 / 3; }
+.gallery-main img { width: 100%; height: 100%; object-fit: contain; background: #f0f3f7; }
+.gallery-thumbs { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-top: 12px; }
+.gallery-thumbs button { padding: 0; border: 2px solid transparent; border-radius: 10px; overflow: hidden; cursor: pointer; aspect-ratio: 1; background: #fff; }
+.gallery-thumbs button.is-on { border-color: var(--accent); }
+.gallery-thumbs img { width: 100%; height: 100%; object-fit: cover; }
+.buy-box { position: sticky; top: 88px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: 24px; }
+.buy-box h1 { font-size: clamp(26px, 3vw, 32px); letter-spacing: -.015em; margin-bottom: 10px; }
+.buy-box .lede { color: var(--muted); font-size: 16.5px; margin: 0 0 18px; }
+.buy-price { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+.buy-price .price { font-size: 30px; }
+.buy-price small { color: var(--muted); font-size: 14px; }
+.btn-buy { width: 100%; justify-content: center; padding: 14px 18px; font-size: 16.5px; }
+.buy-facts { list-style: none; margin: 18px 0 0; padding: 16px 0 0; border-top: 1px solid var(--line); display: grid; gap: 9px; font-size: 14.5px; color: var(--ink-2); }
+.buy-facts li { display: flex; gap: 10px; align-items: flex-start; }
+.buy-facts svg { width: 18px; height: 18px; flex: none; margin-top: 2px; color: var(--accent); }
+.buy-note { margin: 14px 0 0; font-size: 13px; color: var(--muted); }
+.product-body { max-width: 740px; margin-top: 56px; }
+.notice { display: flex; gap: 12px; padding: 16px 18px; border-radius: 12px; background: #fff7e6; border: 1px solid #f0d9a8; color: #6b4a0f; font-size: 15.5px; line-height: 1.6; margin: 0 0 28px; }
+.notice svg { width: 20px; height: 20px; flex: none; margin-top: 3px; }
+.notice strong { color: #4f3608; }
+.prose ul.included { list-style: none; padding: 0; display: grid; gap: 10px; }
+.prose ul.included li { position: relative; padding: 12px 14px 12px 44px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; margin: 0; font-size: 16.5px; }
+.prose ul.included li::before { content: ""; position: absolute; left: 15px; top: 15px; width: 18px; height: 18px; border-radius: 50%; background: var(--accent-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233f5a78' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E") center / 12px no-repeat; }
+.related { margin-top: 36px; padding: 20px 22px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap; }
+.related p { margin: 0; color: var(--muted); font-size: 15px; }
+.related strong { display: block; color: var(--ink); font-size: 17px; }
+.buy-bar { display: none; }
+
+@media (max-width: 1080px) {
+  .shop-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 860px) {
+  .product-top { grid-template-columns: 1fr; gap: 24px; }
+  .buy-box { position: static; }
+}
+@media (max-width: 760px) {
+  .shop-grid { grid-template-columns: 1fr; gap: 16px; }
+  .shop-page { padding: 32px 0 64px; }
+  .product { padding: 24px 0 110px; }
+  .gallery-thumbs { grid-template-columns: repeat(5, 1fr); gap: 6px; }
+  .buy-box { padding: 20px; }
+  .product-body { margin-top: 40px; }
+  /* Buy button stays reachable while scrolling on phones */
+  .buy-bar { display: flex; position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; gap: 12px; align-items: center; justify-content: space-between; padding: 12px 16px calc(12px + env(safe-area-inset-bottom)); background: rgba(255, 255, 255, .96); backdrop-filter: blur(10px); border-top: 1px solid var(--line); box-shadow: 0 -6px 20px rgba(27, 38, 52, .08); transform: translateY(110%); transition: transform .25s; }
+  .buy-bar.show { transform: none; }
+  .buy-bar .btn { padding: 11px 18px; }
+}
+
+/* No price shown: card footer only has "See details", buy bar shows the title */
+.product-card-foot .see { margin-left: auto; }
+.buy-bar-title { font-weight: 600; color: var(--ink); font-size: 14.5px; line-height: 1.3; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.buy-bar .btn { flex: none; }
+.gallery-main img { touch-action: pan-y; }

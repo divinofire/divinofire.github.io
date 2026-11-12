@@ -19,3 +19,7 @@ words_per_minute: 200
 
 exclude:
   - README.md
+
+# Shop: set to true to show prices on the shop and product pages.
+# Each product keeps its price in its own file either way.
+shop_show_prices: false

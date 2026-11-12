@@ -5,6 +5,15 @@ Personal website of **Divine Enow**, served by GitHub Pages at <https://divinofi
 Plain HTML, CSS and JavaScript, plus Markdown posts. GitHub Pages builds the site with Jekyll on its
 own servers, so there is nothing to install: edit, commit, push, and the change is live within a minute or two.
 
+## Adding a product to the shop
+
+1. Copy `shop/_new-product-template/` and rename the copy, e.g. `shop/my-product/`.
+2. Put the product pictures in that folder and list them under `images:` (the first shows first).
+3. Fill in the title, Selar link (`buy_url`), price and description, then commit and push.
+
+Prices are kept in each product file but hidden everywhere while `shop_show_prices: false` in `_config.yml`.
+Change it to `true` to show them.
+
 ## Writing a post
 
 1. Copy the folder `posts/_new-post-template/` and rename the copy, e.g. `posts/my-new-post/`
@@ -27,14 +36,19 @@ _layouts/post.html          ← how a single post page looks
 _includes/                  ← header menu, post card, share button, YouTube player
 posts/index.html            ← the "all posts" page (lists posts automatically)
 posts/<post-name>/index.md  ← one folder per post, with its pictures
+shop/index.html             ← the shop page (lists products automatically)
+shop/<product>/index.md     ← one folder per product, with its pictures
+_layouts/product.html       ← how a product page looks
 feed.xml                    ← RSS feed of the posts
 404.html                    ← "page not found" page
 assets/
   css/style.css             ← colours, fonts, layout
   css/posts.css             ← styles for posts
+  css/shop.css              ← styles for the shop
   js/site-config.js         ← YOUR SETTINGS: email, LinkedIn, GitHub, CV path
   js/main.js                ← menu, animations, hides missing links/images
   js/posts.js               ← share buttons, tag filter, YouTube player
+  js/shop.js                ← product picture gallery, phone buy bar
   fonts/                    ← IBM Plex Sans + Mono (self-hosted)
   docs/                     ← put cv.pdf here
   images/

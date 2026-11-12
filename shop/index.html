@@ -1,0 +1,39 @@
+---
+layout: default
+title: Shop
+description: "Project files and resources by Divine Enow, packaged so you can learn from them or build your own."
+permalink: /shop/
+---
+{%- assign products = site.pages | where: "layout", "product" | sort: "order" -%}
+<section class="shop-page">
+  <div class="wrap">
+    <header class="posts-head">
+      <h1>Shop</h1>
+      <p>Project files and resources from things I have built, packaged so you can learn from them or build your own. Payment and download are handled by Selar.</p>
+    </header>
+
+    {%- if products.size > 0 %}
+    <div class="shop-grid">
+      {%- for p in products %}
+      {%- assign card_img = p.cover | default: p.images[0] %}
+      <a class="product-card" href="{{ p.url }}">
+        <div class="post-cover">
+          {%- if card_img %}<img src="{{ p.url }}{{ card_img }}" alt="" loading="lazy">{% endif -%}
+          {%- if p.kind %}<span class="product-kind">{{ p.kind }}</span>{% endif -%}
+        </div>
+        <div class="product-card-body">
+          <h3>{{ p.title }}</h3>
+          <p>{{ p.summary | default: p.description }}</p>
+          <div class="product-card-foot">
+            {%- if site.shop_show_prices and p.price %}<span class="price{% if p.price == 'Free' %} price-free{% endif %}">{{ p.price }}</span>{% else %}<span></span>{% endif %}
+            <span class="see">See details <span aria-hidden="true">→</span></span>
+          </div>
+        </div>
+      </a>
+      {%- endfor %}
+    </div>
+    {%- else %}
+    <p class="posts-empty">The first product is on its way.</p>
+    {%- endif %}
+  </div>
+</section>

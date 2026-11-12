@@ -46,6 +46,9 @@
   <link rel="preload" href="/assets/fonts/ibm-plex-sans-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/css/style.css">
   <link rel="stylesheet" href="/assets/css/posts.css">
+  {%- if page.url contains '/shop/' %}
+  <link rel="stylesheet" href="/assets/css/shop.css">
+  {%- endif %}
   <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
@@ -58,12 +61,15 @@
   <footer class="site-footer">
     <div class="wrap footer-inner">
       <span>© <span id="year">{{ site.time | date: '%Y' }}</span> Divine Enow</span>
-      <span class="footer-links"><a href="/posts/">Posts</a><a href="/feed.xml">RSS feed</a><a href="/archive/">Early web experiments</a></span>
+      <span class="footer-links"><a href="/posts/">Posts</a><a href="/shop/">Shop</a><a href="/feed.xml">RSS feed</a><a href="/archive/">Early web experiments</a></span>
     </div>
   </footer>
 
   <script src="/assets/js/site-config.js"></script>
   <script src="/assets/js/main.js"></script>
   <script src="/assets/js/posts.js"></script>
+  {%- if page.layout == 'product' %}
+  <script src="/assets/js/shop.js"></script>
+  {%- endif %}
 </body>
 </html>
