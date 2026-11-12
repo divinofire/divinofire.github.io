@@ -14,7 +14,7 @@ I've taken 116 engineering courses, or I will have by the end of my master's. Tw
 
 This post lists every single one of them, year by year. Along the way I'll tell you which ones I failed, which ones I aced, the one I loved most, and the ones that kept following me around.
 
-If you'd rather watch than read, there's a video version on my YouTube channel, relaxedTutor:
+If you'd rather watch than read, there's a video version on my YouTube channel, [relaxedTutor](https://www.youtube.com/@RelaxedTutor):
 
 {% include youtube.html id="K4A9s5yN2-w" title="I've Taken 100+ Engineering Courses. Here's Every Single One" %}
 
@@ -355,6 +355,6 @@ Control is the clear thread. Six courses across three degrees.
 
 That's every course I've taken so far. But with AI doing more of the thinking for us, I've started to wonder if people will still care to learn this stuff, or just give up on it.
 
-If you still care, join me as I unpack what I've learned over the years, one post and one video at a time. You'll find the posts here, and the videos on YouTube as relaxedTutor.
+If you still care, join me as I unpack what I've learned over the years, one post and one video at a time. You'll find the posts here, and the videos on YouTube as [relaxedTutor](https://www.youtube.com/@RelaxedTutor).
 
 Which course would you want me to unpack first? Tell me in the comments under [the video](https://www.youtube.com/watch?v=K4A9s5yN2-w).
