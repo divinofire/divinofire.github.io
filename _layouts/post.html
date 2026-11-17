@@ -33,7 +33,7 @@ layout: default
     {%- endif %}
 
     <div class="prose">
-{{ content }}
+{{ content | replace: '<img src=', '<img loading="lazy" decoding="async" src=' }}
     </div>
 
     <aside class="post-end">
